@@ -15,6 +15,8 @@
         <slf4j-version>1.7.22</slf4j-version>
         <mojarra-version>2.2.13</mojarra-version>
         <primefaces-version>5.0</primefaces-version>
+        <hibernate-version>5.2.6.Final</hibernate-version>
+        <mysql-connector-version>5.1.38</mysql-connector-version>
     </properties>
 
 
@@ -136,6 +138,21 @@
             <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version> ${mysql-connector-version}</version>
+        </dependency>
+
     </dependencies>
 
 

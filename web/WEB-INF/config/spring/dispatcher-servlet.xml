@@ -20,13 +20,42 @@
     </bean>
 
 
-
-
     <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass" value="org.springframework.faces.mvc.JsfView"/>
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".xhtml"/>
     </bean>
+
+
+    <bean id="msg" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/WEB-INF/locales/messages" />
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+        <property name="defaultLocale" value="ru" />
+    </bean>
+
+
+ <!--   <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="jdbc/Library"/>
+    </bean>
+
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        &lt;!&ndash;<property name="configLocation" value="classpath:hibernate.cfg.xml" />&ndash;&gt;
+        <property name="packagesToScan" value="com.NovikIgor.onlineLibrary.entities" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>-->
+
+
 
 
 </beans>
