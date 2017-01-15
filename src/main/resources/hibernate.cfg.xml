@@ -13,7 +13,7 @@
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.connection.datasource">jdbc/Library</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.connection.password">novik03</property>
 
 
 

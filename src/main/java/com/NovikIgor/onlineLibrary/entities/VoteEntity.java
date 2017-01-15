@@ -3,7 +3,7 @@ package com.NovikIgor.onlineLibrary.entities;
 /**
  * Created by Novik Igor on 12.01.2017.
  */
-public class VoteEntity {
+public class  VoteEntity {
     private long id;
     private Integer value;
     private String username;
