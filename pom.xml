@@ -7,6 +7,7 @@
     <groupId>com.NovikIgor</groupId>
     <artifactId>OnlineLibrary</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <properties>
         <webflow-version>2.4.4.RELEASE</webflow-version>

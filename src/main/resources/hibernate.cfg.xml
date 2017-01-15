@@ -6,7 +6,7 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
-    <property name="connection.url">jdbc:mysql://localhost:3306/Library</property>
+    <property name="connection.url">jdbc:mysql://localhost:3306/library</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
     <property name="hibernate.show_sql">true</property>
@@ -18,15 +18,15 @@
 
 
     <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Author"/>-->
-    <mapping resource="com/NovikIgor/onlineLibrary/entities/Author.hbm.xml"/>
+    <mapping resource="com.NovikIgor.onlineLibrary.entities/Author.hbm.xml"/>
     <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Book"/>-->
-    <mapping resource="com/NovikIgor/onlineLibrary/entities/Book.hbm.xml"/>
+    <mapping resource="com.NovikIgor.onlineLibrary.entities/Book.hbm.xml"/>
     <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Genre"/>-->
-    <mapping resource="com/NovikIgor/onlineLibrary/entities/Genre.hbm.xml"/>
+    <mapping resource="com.NovikIgor.onlineLibrary.entities/Genre.hbm.xml"/>
     <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Publisher"/>-->
-    <mapping resource="com/NovikIgor/onlineLibrary/entities/Publisher.hbm.xml"/>
+    <mapping resource="com.NovikIgor.onlineLibrary.entities/Publisher.hbm.xml"/>
     <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Vote"/>-->
-    <mapping resource="com/NovikIgor/onlineLibrary/entities/Vote.hbm.xml"/>
+    <mapping resource="com.NovikIgor.onlineLibrary.entities/Vote.hbm.xml"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
