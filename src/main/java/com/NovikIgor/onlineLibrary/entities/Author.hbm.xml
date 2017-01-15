@@ -4,9 +4,9 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.NovikIgor.onlineLibrary.entities.VoteEntity" table="vote" schema="library">
+    <class name="com.NovikIgor.onlineLibrary.entities.Author" table="author" schema="Library">
         <id name="id" column="id"/>
-        <property name="value" column="value"/>
-        <property name="username" column="username"/>
+        <property name="fio" column="fio"/>
+        <property name="birthday" column="birthday"/>
     </class>
 </hibernate-mapping>

@@ -1,15 +1,22 @@
 package com.NovikIgor.onlineLibrary.entities;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Date;
 
 /**
- * Created by Novik Igor on 12.01.2017.
+ * Created by nolik on 15.01.17.
  */
-public class AuthorEntity {
+@Entity
+public class Author {
     private long id;
     private String fio;
     private Date birthday;
 
+    @Id
+    @Column(name = "id")
     public long getId() {
         return id;
     }
@@ -18,6 +25,8 @@ public class AuthorEntity {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "fio")
     public String getFio() {
         return fio;
     }
@@ -26,6 +35,8 @@ public class AuthorEntity {
         this.fio = fio;
     }
 
+    @Basic
+    @Column(name = "birthday")
     public Date getBirthday() {
         return birthday;
     }
@@ -39,11 +50,11 @@ public class AuthorEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AuthorEntity that = (AuthorEntity) o;
+        Author author = (Author) o;
 
-        if (id != that.id) return false;
-        if (fio != null ? !fio.equals(that.fio) : that.fio != null) return false;
-        if (birthday != null ? !birthday.equals(that.birthday) : that.birthday != null) return false;
+        if (id != author.id) return false;
+        if (fio != null ? !fio.equals(author.fio) : author.fio != null) return false;
+        if (birthday != null ? !birthday.equals(author.birthday) : author.birthday != null) return false;
 
         return true;
     }

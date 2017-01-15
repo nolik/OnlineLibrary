@@ -1,22 +1,32 @@
 package com.NovikIgor.onlineLibrary.entities;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Arrays;
 
 /**
- * Created by Novik Igor on 12.01.2017.
+ * Created by nolik on 15.01.17.
  */
-public class BookEntity {
+@Entity
+public class Book {
     private long id;
     private String name;
     private byte[] content;
     private int pageCount;
     private String isbn;
+    private long genreId;
+    private long authorId;
     private int publishYear;
+    private long publisherId;
     private byte[] image;
     private String descr;
     private Integer rating;
     private Long voteCount;
 
+    @Id
+    @Column(name = "id")
     public long getId() {
         return id;
     }
@@ -25,6 +35,8 @@ public class BookEntity {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -33,6 +45,8 @@ public class BookEntity {
         this.name = name;
     }
 
+    @Basic
+    @Column(name = "content")
     public byte[] getContent() {
         return content;
     }
@@ -41,6 +55,8 @@ public class BookEntity {
         this.content = content;
     }
 
+    @Basic
+    @Column(name = "page_count")
     public int getPageCount() {
         return pageCount;
     }
@@ -49,6 +65,8 @@ public class BookEntity {
         this.pageCount = pageCount;
     }
 
+    @Basic
+    @Column(name = "isbn")
     public String getIsbn() {
         return isbn;
     }
@@ -57,6 +75,28 @@ public class BookEntity {
         this.isbn = isbn;
     }
 
+    @Basic
+    @Column(name = "genre_id")
+    public long getGenreId() {
+        return genreId;
+    }
+
+    public void setGenreId(long genreId) {
+        this.genreId = genreId;
+    }
+
+    @Basic
+    @Column(name = "author_id")
+    public long getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(long authorId) {
+        this.authorId = authorId;
+    }
+
+    @Basic
+    @Column(name = "publish_year")
     public int getPublishYear() {
         return publishYear;
     }
@@ -65,6 +105,18 @@ public class BookEntity {
         this.publishYear = publishYear;
     }
 
+    @Basic
+    @Column(name = "publisher_id")
+    public long getPublisherId() {
+        return publisherId;
+    }
+
+    public void setPublisherId(long publisherId) {
+        this.publisherId = publisherId;
+    }
+
+    @Basic
+    @Column(name = "image")
     public byte[] getImage() {
         return image;
     }
@@ -73,6 +125,8 @@ public class BookEntity {
         this.image = image;
     }
 
+    @Basic
+    @Column(name = "descr")
     public String getDescr() {
         return descr;
     }
@@ -81,6 +135,8 @@ public class BookEntity {
         this.descr = descr;
     }
 
+    @Basic
+    @Column(name = "rating")
     public Integer getRating() {
         return rating;
     }
@@ -89,6 +145,8 @@ public class BookEntity {
         this.rating = rating;
     }
 
+    @Basic
+    @Column(name = "vote_count")
     public Long getVoteCount() {
         return voteCount;
     }
@@ -102,18 +160,21 @@ public class BookEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        BookEntity that = (BookEntity) o;
+        Book book = (Book) o;
 
-        if (id != that.id) return false;
-        if (pageCount != that.pageCount) return false;
-        if (publishYear != that.publishYear) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (!Arrays.equals(content, that.content)) return false;
-        if (isbn != null ? !isbn.equals(that.isbn) : that.isbn != null) return false;
-        if (!Arrays.equals(image, that.image)) return false;
-        if (descr != null ? !descr.equals(that.descr) : that.descr != null) return false;
-        if (rating != null ? !rating.equals(that.rating) : that.rating != null) return false;
-        if (voteCount != null ? !voteCount.equals(that.voteCount) : that.voteCount != null) return false;
+        if (id != book.id) return false;
+        if (pageCount != book.pageCount) return false;
+        if (genreId != book.genreId) return false;
+        if (authorId != book.authorId) return false;
+        if (publishYear != book.publishYear) return false;
+        if (publisherId != book.publisherId) return false;
+        if (name != null ? !name.equals(book.name) : book.name != null) return false;
+        if (!Arrays.equals(content, book.content)) return false;
+        if (isbn != null ? !isbn.equals(book.isbn) : book.isbn != null) return false;
+        if (!Arrays.equals(image, book.image)) return false;
+        if (descr != null ? !descr.equals(book.descr) : book.descr != null) return false;
+        if (rating != null ? !rating.equals(book.rating) : book.rating != null) return false;
+        if (voteCount != null ? !voteCount.equals(book.voteCount) : book.voteCount != null) return false;
 
         return true;
     }
@@ -125,7 +186,10 @@ public class BookEntity {
         result = 31 * result + Arrays.hashCode(content);
         result = 31 * result + pageCount;
         result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
+        result = 31 * result + (int) (genreId ^ (genreId >>> 32));
+        result = 31 * result + (int) (authorId ^ (authorId >>> 32));
         result = 31 * result + publishYear;
+        result = 31 * result + (int) (publisherId ^ (publisherId >>> 32));
         result = 31 * result + Arrays.hashCode(image);
         result = 31 * result + (descr != null ? descr.hashCode() : 0);
         result = 31 * result + (rating != null ? rating.hashCode() : 0);

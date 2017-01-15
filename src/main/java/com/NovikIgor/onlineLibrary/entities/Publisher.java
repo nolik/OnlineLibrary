@@ -1,12 +1,20 @@
 package com.NovikIgor.onlineLibrary.entities;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
- * Created by Novik Igor on 12.01.2017.
+ * Created by nolik on 15.01.17.
  */
-public class GenreEntity {
+@Entity
+public class Publisher {
     private long id;
     private String name;
 
+    @Id
+    @Column(name = "id")
     public long getId() {
         return id;
     }
@@ -15,6 +23,8 @@ public class GenreEntity {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -28,10 +38,10 @@ public class GenreEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GenreEntity that = (GenreEntity) o;
+        Publisher publisher = (Publisher) o;
 
-        if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (id != publisher.id) return false;
+        if (name != null ? !name.equals(publisher.name) : publisher.name != null) return false;
 
         return true;
     }
