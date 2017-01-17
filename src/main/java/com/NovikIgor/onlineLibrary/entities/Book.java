@@ -1,10 +1,8 @@
 package com.NovikIgor.onlineLibrary.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Created by nolik on 15.01.17.
@@ -24,9 +22,13 @@ public class Book {
     private String descr;
     private Integer rating;
     private Long voteCount;
+    private Genre genreByGenreId;
+    private Author authorByAuthorId;
+    private Publisher publisherByPublisherId;
+    private Collection<Vote> votesById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
@@ -36,7 +38,7 @@ public class Book {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 45)
     public String getName() {
         return name;
     }
@@ -46,7 +48,7 @@ public class Book {
     }
 
     @Basic
-    @Column(name = "content")
+    @Column(name = "content", nullable = false)
     public byte[] getContent() {
         return content;
     }
@@ -56,7 +58,7 @@ public class Book {
     }
 
     @Basic
-    @Column(name = "page_count")
+    @Column(name = "page_count", nullable = false)
     public int getPageCount() {
         return pageCount;
     }
@@ -66,7 +68,7 @@ public class Book {
     }
 
     @Basic
-    @Column(name = "isbn")
+    @Column(name = "isbn", nullable = false, length = 100)
     public String getIsbn() {
         return isbn;
     }
@@ -96,7 +98,7 @@ public class Book {
     }
 
     @Basic
-    @Column(name = "publish_year")
+    @Column(name = "publish_year", nullable = false)
     public int getPublishYear() {
         return publishYear;
     }
@@ -116,7 +118,7 @@ public class Book {
     }
 
     @Basic
-    @Column(name = "image")
+    @Column(name = "image", nullable = true)
     public byte[] getImage() {
         return image;
     }
@@ -126,7 +128,7 @@ public class Book {
     }
 
     @Basic
-    @Column(name = "descr")
+    @Column(name = "descr", nullable = true, length = 5000)
     public String getDescr() {
         return descr;
     }
@@ -136,7 +138,7 @@ public class Book {
     }
 
     @Basic
-    @Column(name = "rating")
+    @Column(name = "rating", nullable = true)
     public Integer getRating() {
         return rating;
     }
@@ -146,7 +148,7 @@ public class Book {
     }
 
     @Basic
-    @Column(name = "vote_count")
+    @Column(name = "vote_count", nullable = true)
     public Long getVoteCount() {
         return voteCount;
     }
@@ -195,5 +197,44 @@ public class Book {
         result = 31 * result + (rating != null ? rating.hashCode() : 0);
         result = 31 * result + (voteCount != null ? voteCount.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "genre_id", referencedColumnName = "id", nullable = false)
+    public Genre getGenreByGenreId() {
+        return genreByGenreId;
+    }
+
+    public void setGenreByGenreId(Genre genreByGenreId) {
+        this.genreByGenreId = genreByGenreId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
+    public Author getAuthorByAuthorId() {
+        return authorByAuthorId;
+    }
+
+    public void setAuthorByAuthorId(Author authorByAuthorId) {
+        this.authorByAuthorId = authorByAuthorId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "publisher_id", referencedColumnName = "id", nullable = false)
+    public Publisher getPublisherByPublisherId() {
+        return publisherByPublisherId;
+    }
+
+    public void setPublisherByPublisherId(Publisher publisherByPublisherId) {
+        this.publisherByPublisherId = publisherByPublisherId;
+    }
+
+    @OneToMany(mappedBy = "bookByBookId")
+    public Collection<Vote> getVotesById() {
+        return votesById;
+    }
+
+    public void setVotesById(Collection<Vote> votesById) {
+        this.votesById = votesById;
     }
 }

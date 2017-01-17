@@ -1,9 +1,6 @@
 package com.NovikIgor.onlineLibrary.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by nolik on 15.01.17.
@@ -14,9 +11,10 @@ public class Vote {
     private Integer value;
     private long bookId;
     private String username;
+    private Book bookByBookId;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
@@ -26,7 +24,7 @@ public class Vote {
     }
 
     @Basic
-    @Column(name = "value")
+    @Column(name = "value", nullable = true)
     public Integer getValue() {
         return value;
     }
@@ -46,7 +44,7 @@ public class Vote {
     }
 
     @Basic
-    @Column(name = "username")
+    @Column(name = "username", nullable = false, length = 100)
     public String getUsername() {
         return username;
     }
@@ -77,5 +75,15 @@ public class Vote {
         result = 31 * result + (int) (bookId ^ (bookId >>> 32));
         result = 31 * result + (username != null ? username.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "book_id", referencedColumnName = "id", nullable = false)
+    public Book getBookByBookId() {
+        return bookByBookId;
+    }
+
+    public void setBookByBookId(Book bookByBookId) {
+        this.bookByBookId = bookByBookId;
     }
 }

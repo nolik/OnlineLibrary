@@ -5,9 +5,17 @@
 <hibernate-mapping>
 
     <class name="com.NovikIgor.onlineLibrary.entities.Vote" table="vote" schema="library">
-        <id name="id" column="id"/>
-        <property name="value" column="value"/>
-        <property name="bookId" column="book_id"/>
-        <property name="username" column="username"/>
+        <id name="id">
+            <column name="id" sql-type="bigint(20)"/>
+        </id>
+        <property name="value">
+            <column name="value" sql-type="int(5)" not-null="true"/>
+        </property>
+        <property name="username">
+            <column name="username" sql-type="varchar(100)" length="100"/>
+        </property>
+        <many-to-one name="bookByBookId" class="com.NovikIgor.onlineLibrary.entities.Book">
+            <column name="book_id"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

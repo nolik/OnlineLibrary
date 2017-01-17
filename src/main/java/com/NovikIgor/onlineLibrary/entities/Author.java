@@ -1,10 +1,8 @@
 package com.NovikIgor.onlineLibrary.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
 
 /**
  * Created by nolik on 15.01.17.
@@ -14,9 +12,10 @@ public class Author {
     private long id;
     private String fio;
     private Date birthday;
+    private Collection<Book> booksById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
@@ -26,7 +25,7 @@ public class Author {
     }
 
     @Basic
-    @Column(name = "fio")
+    @Column(name = "fio", nullable = false, length = 300)
     public String getFio() {
         return fio;
     }
@@ -36,7 +35,7 @@ public class Author {
     }
 
     @Basic
-    @Column(name = "birthday")
+    @Column(name = "birthday", nullable = false)
     public Date getBirthday() {
         return birthday;
     }
@@ -65,5 +64,14 @@ public class Author {
         result = 31 * result + (fio != null ? fio.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "authorByAuthorId")
+    public Collection<Book> getBooksById() {
+        return booksById;
+    }
+
+    public void setBooksById(Collection<Book> booksById) {
+        this.booksById = booksById;
     }
 }

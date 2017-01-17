@@ -1,9 +1,7 @@
 package com.NovikIgor.onlineLibrary.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by nolik on 15.01.17.
@@ -13,9 +11,11 @@ public class Genre {
     private long id;
     private String name;
     private Long parent;
+    private Collection<Book> booksById;
+    private Author authorByParent;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
@@ -25,7 +25,7 @@ public class Genre {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 100)
     public String getName() {
         return name;
     }
@@ -64,5 +64,24 @@ public class Genre {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (parent != null ? parent.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "genreByGenreId")
+    public Collection<Book> getBooksById() {
+        return booksById;
+    }
+
+    public void setBooksById(Collection<Book> booksById) {
+        this.booksById = booksById;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "parent", referencedColumnName = "id")
+    public Author getAuthorByParent() {
+        return authorByParent;
+    }
+
+    public void setAuthorByParent(Author authorByParent) {
+        this.authorByParent = authorByParent;
     }
 }

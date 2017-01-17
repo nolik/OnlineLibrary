@@ -5,8 +5,20 @@
 <hibernate-mapping>
 
     <class name="com.NovikIgor.onlineLibrary.entities.Author" table="author" schema="library">
-        <id name="id" column="id"/>
-        <property name="fio" column="fio"/>
-        <property name="birthday" column="birthday"/>
+        <id name="id">
+            <column name="id" sql-type="bigint(20)"/>
+        </id>
+        <property name="fio">
+            <column name="fio" sql-type="varchar(300)" length="300"/>
+        </property>
+        <property name="birthday">
+            <column name="birthday" sql-type="date"/>
+        </property>
+        <set name="booksById" inverse="true">
+            <key>
+                <column name="author_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.NovikIgor.onlineLibrary.entities.Book"/>
+        </set>
     </class>
 </hibernate-mapping>

@@ -10,24 +10,23 @@
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
     <property name="hibernate.show_sql">true</property>
-    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.current_session_context_class"> org.springframework.orm.hibernate4.SpringSessionContext </property>
+    <!--<property name="hibernate.current_session_context_class">thread</property>-->
     <property name="hibernate.connection.datasource">jdbc/Library</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">novik03</property>
 
 
 
-    <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Author"/>-->
-    <mapping resource="com.NovikIgor.onlineLibrary.entities/Author.hbm.xml"/>
-    <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Book"/>-->
-    <mapping resource="com.NovikIgor.onlineLibrary.entities/Book.hbm.xml"/>
-    <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Genre"/>-->
-    <mapping resource="com.NovikIgor.onlineLibrary.entities/Genre.hbm.xml"/>
-    <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Publisher"/>-->
-    <mapping resource="com.NovikIgor.onlineLibrary.entities/Publisher.hbm.xml"/>
-    <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Vote"/>-->
-    <mapping resource="com.NovikIgor.onlineLibrary.entities/Vote.hbm.xml"/>
-    <!-- DB schema will be updated if needed -->
+      <mapping resource="com.NovikIgor.onlineLibrary.entities/Author.hbm.xml"/>
+      <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Author"/>-->
+      <mapping resource="com.NovikIgor.onlineLibrary.entities/Book.hbm.xml"/>
+      <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Book"/>-->
+      <mapping resource="com.NovikIgor.onlineLibrary.entities/Genre.hbm.xml"/>
+      <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Genre"/>-->
+      <mapping class="com.NovikIgor.onlineLibrary.entities.Publisher"/>
+      <!--<mapping resource="com.NovikIgor.onlineLibrary.entities/Publisher.hbm.xml"/>-->
+      <mapping resource="com.NovikIgor.onlineLibrary.entities/Vote.hbm.xml"/>
+      <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Vote"/>-->
+      <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>

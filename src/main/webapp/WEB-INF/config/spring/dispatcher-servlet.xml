@@ -11,6 +11,8 @@
 
     <import resource="webflow.xml"/>
 
+    <context:component-scan base-package="com.NovikIgor.onlineLibrary"/>
+
     <mvc:resources location="/" mapping="/resources/**"/>
 
 
@@ -49,6 +51,7 @@
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+        <property name="packagesToScan" value="com.NovikIgor.onlineLibrary.entities" />
 
 
     </bean>
