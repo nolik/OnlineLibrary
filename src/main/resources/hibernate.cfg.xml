@@ -14,18 +14,26 @@
     <!--<property name="hibernate.current_session_context_class">thread</property>-->
     <property name="hibernate.connection.datasource">jdbc/Library</property>
 
-
-
-      <mapping resource="com.NovikIgor.onlineLibrary.entities/Author.hbm.xml"/>
+    <mapping resource="com.NovikIgor.onlineLibrary.entities/Author.hbm.xml"/>
       <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Author"/>-->
       <mapping resource="com.NovikIgor.onlineLibrary.entities/Book.hbm.xml"/>
       <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Book"/>-->
       <mapping resource="com.NovikIgor.onlineLibrary.entities/Genre.hbm.xml"/>
       <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Genre"/>-->
-      <mapping class="com.NovikIgor.onlineLibrary.entities.Publisher"/>
-      <!--<mapping resource="com.NovikIgor.onlineLibrary.entities/Publisher.hbm.xml"/>-->
+      <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Publisher"/>-->
+      <mapping resource="com.NovikIgor.onlineLibrary.entities/Publisher.hbm.xml"/>
       <mapping resource="com.NovikIgor.onlineLibrary.entities/Vote.hbm.xml"/>
-      <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Vote"/>-->
+    <!--<mapping resource="com/NovikIgor/onlineLibrary/entities/test/Author.hbm.xml"/>-->
+    <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Author"/>-->
+    <!--<mapping resource="com/NovikIgor/onlineLibrary/entities/test/Book.hbm.xml"/>-->
+    <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Book"/>-->
+    <!--<mapping resource="com/NovikIgor/onlineLibrary/entities/test/Genre.hbm.xml"/>-->
+    <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Genre"/>-->
+    <!--<mapping resource="com/NovikIgor/onlineLibrary/entities/test/Publisher.hbm.xml"/>-->
+    <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Publisher"/>-->
+    <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Vote"/>-->
+    <!--<mapping resource="com/NovikIgor/onlineLibrary/entities/test/Vote.hbm.xml"/>-->
+    <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Vote"/>-->
       <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>

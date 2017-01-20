@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * Created by nolik on 15.01.17.
+ * Created by nolik on 20.01.17.
  */
 @Entity
 public class Book {
@@ -14,10 +14,7 @@ public class Book {
     private byte[] content;
     private int pageCount;
     private String isbn;
-    private long genreId;
-    private long authorId;
     private int publishYear;
-    private long publisherId;
     private byte[] image;
     private String descr;
     private Integer rating;
@@ -78,26 +75,6 @@ public class Book {
     }
 
     @Basic
-    @Column(name = "genre_id")
-    public long getGenreId() {
-        return genreId;
-    }
-
-    public void setGenreId(long genreId) {
-        this.genreId = genreId;
-    }
-
-    @Basic
-    @Column(name = "author_id")
-    public long getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(long authorId) {
-        this.authorId = authorId;
-    }
-
-    @Basic
     @Column(name = "publish_year", nullable = false)
     public int getPublishYear() {
         return publishYear;
@@ -105,16 +82,6 @@ public class Book {
 
     public void setPublishYear(int publishYear) {
         this.publishYear = publishYear;
-    }
-
-    @Basic
-    @Column(name = "publisher_id")
-    public long getPublisherId() {
-        return publisherId;
-    }
-
-    public void setPublisherId(long publisherId) {
-        this.publisherId = publisherId;
     }
 
     @Basic
@@ -166,10 +133,7 @@ public class Book {
 
         if (id != book.id) return false;
         if (pageCount != book.pageCount) return false;
-        if (genreId != book.genreId) return false;
-        if (authorId != book.authorId) return false;
         if (publishYear != book.publishYear) return false;
-        if (publisherId != book.publisherId) return false;
         if (name != null ? !name.equals(book.name) : book.name != null) return false;
         if (!Arrays.equals(content, book.content)) return false;
         if (isbn != null ? !isbn.equals(book.isbn) : book.isbn != null) return false;
@@ -188,10 +152,7 @@ public class Book {
         result = 31 * result + Arrays.hashCode(content);
         result = 31 * result + pageCount;
         result = 31 * result + (isbn != null ? isbn.hashCode() : 0);
-        result = 31 * result + (int) (genreId ^ (genreId >>> 32));
-        result = 31 * result + (int) (authorId ^ (authorId >>> 32));
         result = 31 * result + publishYear;
-        result = 31 * result + (int) (publisherId ^ (publisherId >>> 32));
         result = 31 * result + Arrays.hashCode(image);
         result = 31 * result + (descr != null ? descr.hashCode() : 0);
         result = 31 * result + (rating != null ? rating.hashCode() : 0);

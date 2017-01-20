@@ -1,16 +1,17 @@
 package com.NovikIgor.onlineLibrary.entities;
 
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
- * Created by nolik on 15.01.17.
+ * Created by nolik on 20.01.17.
  */
 @Entity
 public class Publisher {
     private long id;
     private String name;
-    private Collection<Book> booksById;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -50,14 +51,5 @@ public class Publisher {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "publisherByPublisherId")
-    public Collection<Book> getBooksById() {
-        return booksById;
-    }
-
-    public void setBooksById(Collection<Book> booksById) {
-        this.booksById = booksById;
     }
 }

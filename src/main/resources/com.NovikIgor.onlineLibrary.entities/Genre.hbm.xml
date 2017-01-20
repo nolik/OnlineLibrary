@@ -14,11 +14,5 @@
         <many-to-one name="authorByParent" class="com.NovikIgor.onlineLibrary.entities.Author">
             <column name="parent" not-null="true"/>
         </many-to-one>
-        <set name="booksById" inverse="true">
-            <key>
-                <column name="genre_id"/>
-            </key>
-            <one-to-many not-found="ignore" class="com.NovikIgor.onlineLibrary.entities.Book"/>
-        </set>
     </class>
 </hibernate-mapping>

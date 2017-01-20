@@ -80,7 +80,7 @@ public class BookDAOImpl implements BookDAO {
     private void createAliases(DetachedCriteria criteria) {
         criteria.createAlias("b.authorByAuthorId", "authorByAuthorId");
         criteria.createAlias("b.genreByGenreId", "genreByGenreId");
-//        criteria.createAlias("b.publisherByPublisherId", "publisherByPublisherId");
+        criteria.createAlias("b.publisherByPublisherId", "publisherByPublisherId");
     }
 
     private List<Book> createBookList(DetachedCriteria bookListCriteria) {

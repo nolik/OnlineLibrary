@@ -11,11 +11,5 @@
         <property name="name">
             <column name="name" sql-type="varchar(100)" length="100"/>
         </property>
-        <set name="booksById" inverse="true">
-            <key>
-                <column name="publisher_id"/>
-            </key>
-            <one-to-many not-found="ignore" class="com.NovikIgor.onlineLibrary.entities.Book"/>
-        </set>
     </class>
 </hibernate-mapping>

@@ -14,11 +14,5 @@
         <property name="birthday">
             <column name="birthday" sql-type="date"/>
         </property>
-        <set name="booksById" inverse="true">
-            <key>
-                <column name="author_id"/>
-            </key>
-            <one-to-many not-found="ignore" class="com.NovikIgor.onlineLibrary.entities.Book"/>
-        </set>
     </class>
 </hibernate-mapping>
