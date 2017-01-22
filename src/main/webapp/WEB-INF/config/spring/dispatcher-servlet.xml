@@ -13,12 +13,25 @@
 
     <context:component-scan base-package="com.NovikIgor.onlineLibrary"/>
 
-    <mvc:resources location="/" mapping="/resources/**"/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
 
 
     <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
         <property name="flowRegistry" ref="flowRegistry"/>
+        <property name="order" value="2"/>
     </bean>
+
+    <bean name="resourceHandlerJSF" class="org.springframework.faces.webflow.JsfResourceRequestHandler"/>
+
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="1"/>
+        <property name="mappings">
+            <value>
+                /javax.faces.resource/**=resourceHandlerJSF
+            </value>
+        </property>
+    </bean>
+
 
     <bean class="org.springframework.faces.webflow.JsfFlowHandlerAdapter">
         <property name="flowExecutor" ref="flowExecutor"/>
@@ -51,7 +64,7 @@
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
-        <property name="packagesToScan" value="com.NovikIgor.onlineLibrary.entities" />
+        <property name="packagesToScan" value="com.NovikIgor.onlineLibrary.entities"/>
 
 
     </bean>

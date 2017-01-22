@@ -6,10 +6,7 @@ import com.NovikIgor.onlineLibrary.entities.Book;
 import com.NovikIgor.onlineLibrary.entities.Genre;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.ProjectionList;
-import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.*;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -45,37 +42,49 @@ public class BookDAOImpl implements BookDAO {
         bookProjection.add(Projections.property("voteCount"), "voteCount");
     }
 
+
     @Transactional
     @Override
     public List<Book> getBooks() {
-
-        DetachedCriteria bookListCriteria = DetachedCriteria.forClass(Book.class, "b");
-        createAliases(bookListCriteria);
-
-        List<Book> books = createBookList(bookListCriteria);
-
+        List<Book> books = createBookList(createBookCriteria());
         return books;
     }
 
+    @Transactional
     @Override
     public List<Book> getBooks(Author author) {
-        return null;
+        List<Book> books = createBookList(createBookCriteria().add(Restrictions.ilike("authorByAuthorId.fio", author.getFio(), MatchMode.ANYWHERE)));
+        return books;
     }
 
+    @Transactional
     @Override
     public List<Book> getBooks(String bookName) {
-        return null;
+        List<Book> books = createBookList(createBookCriteria().add(Restrictions.ilike("b.name", bookName, MatchMode.ANYWHERE)));
+        return books;
     }
 
+    @Transactional
     @Override
     public List<Book> getBooks(Genre genre) {
-        return null;
+        List<Book> books = createBookList(createBookCriteria().add(Restrictions.ilike("authorByAuthorId.fio", genre.getName(), MatchMode.ANYWHERE)));
+        return books;
     }
 
+    @Transactional
     @Override
     public List<Book> getBooks(Character letter) {
-        return null;
+        List<Book> books = createBookList(createBookCriteria().add(Restrictions.ilike("b.name", letter.toString(), MatchMode.START)));
+        return books;
+
     }
+
+    private DetachedCriteria createBookCriteria() {
+        DetachedCriteria bookListCriteria = DetachedCriteria.forClass(Book.class, "b");
+        createAliases(bookListCriteria);
+        return bookListCriteria;
+    }
+
 
     private void createAliases(DetachedCriteria criteria) {
         criteria.createAlias("b.authorByAuthorId", "authorByAuthorId");
