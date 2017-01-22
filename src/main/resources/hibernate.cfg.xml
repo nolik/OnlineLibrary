@@ -13,6 +13,7 @@
     <!--<property name="hibernate.current_session_context_class"> org.springframework.orm.hibernate4.SpringSessionContext </property>-->
     <!--<property name="hibernate.current_session_context_class">thread</property>-->
     <!--<property name="hibernate.connection.datasource">jdbc/Library</property>-->
+    <property name="hibernate.enable_lazy_load_no_trans">true</property>
 
     <mapping resource="com.NovikIgor.onlineLibrary.entities/Author.hbm.xml"/>
       <!--<mapping class="com.NovikIgor.onlineLibrary.entities.Author"/>-->
