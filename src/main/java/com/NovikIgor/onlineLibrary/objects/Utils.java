@@ -17,7 +17,7 @@ import java.util.Map;
 public class Utils {
 
     private Map<String, SearchType> searchTypeList = new HashMap<String, SearchType>();
-    private SearchType selectedSearchType = SearchType.TITLE;// default value
+    private String searchString;
 
 
     @Autowired
@@ -36,13 +36,16 @@ public class Utils {
         return searchTypeList;
     }
 
-    public SearchType getSelectedSearchType() {
-        return selectedSearchType;
-    }
 
     public void setSearchTypeList(Map<String, SearchType> searchTypeList) {
         this.searchTypeList = searchTypeList;
     }
 
+    public String getSearchString() {
+        return searchString;
+    }
 
+    public void setSearchString(String searchString) {
+        this.searchString = searchString;
+    }
 }
