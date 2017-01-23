@@ -62,6 +62,15 @@
         <!--<property name="packagesToScan" value="com.NovikIgor.onlineLibrary.entities"/>-->
     </bean>
 
+    <bean class="org.springframework.web.context.support.ServletContextAttributeExporter">
+        <property name="attributes">
+            <map>
+                <entry key="libraryFacade" value-ref="libraryFacade"/>
+            </map>
+        </property>
+    </bean>
+
+
 
     <tx:annotation-driven/>
     <bean id="transactionManager"

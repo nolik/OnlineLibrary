@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Genre {
     private long id;
     private String name;
-    private Author authorByParent;
+
 
     @Id
     @Column(name = "id", nullable = false)
@@ -51,13 +51,9 @@ public class Genre {
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "parent", referencedColumnName = "id")
-    public Author getAuthorByParent() {
-        return authorByParent;
+    @Override
+    public String toString() {
+        return name;
     }
 
-    public void setAuthorByParent(Author authorByParent) {
-        this.authorByParent = authorByParent;
-    }
 }
