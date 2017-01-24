@@ -12,7 +12,7 @@ import java.util.List;
 // Created by nolik on 22.01.17.
 
 
-@Component
+@Component("libraryFacade")
 @Scope("singleton")
 public class LibraryFacade {
 
