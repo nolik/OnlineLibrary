@@ -78,11 +78,11 @@
 
                     </h:outputLink>
 
-                    <p:commandLink styleClass="mr" title="#{msg.edit_book}" >
+                    <p:commandLink styleClass="mr" title="#{msg.edit_book}" rendered="#{sec:areAllGranted('ROLE_ADMIN')}">
                         <p class="edit">#{msg.edit}</p>
                     </p:commandLink>
 
-                    <p:commandLink styleClass="delete-button" title="#{msg.delete_book}" type="button">
+                    <p:commandLink styleClass="delete-button" title="#{msg.delete_book}" type="button" rendered="#{sec:areAllGranted('ROLE_ADMIN')}">
                         <p class="delete">#{msg.delete}</p>
                     </p:commandLink>
 
@@ -107,7 +107,7 @@
 
             <h:form id="add-action">
                 <p:commandLink>
-                    <h:outputText value="#{msg.add_book}" title="#{msg.add_book}"/>
+                    <h:outputText value="#{msg.add_book}" title="#{msg.add_book}" rendered="#{sec:areAllGranted('ROLE_ADMIN')}"/>
                 </p:commandLink>
             </h:form>
 
